@@ -1,1 +1,0 @@
-Automating testing in Python
