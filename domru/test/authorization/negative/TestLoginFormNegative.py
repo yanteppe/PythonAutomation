@@ -8,7 +8,7 @@ from domru.core.pageobject.LoginFormPage import LoginFormPage
 from domru.core.pageobject.HomePage import HomePage
 
 
-class TestLoginFormPositive(unittest.TestCase):
+class TestLoginFormNegative(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome("/chromedriver")
@@ -19,82 +19,69 @@ class TestLoginFormPositive(unittest.TestCase):
         homePage.SignInButton()
 
 
-    def testFormPositive_1(self):
+    def usernameAndPasswodEmpty_1(self):
+        driver = self.driver
+        loginForm = LoginFormPage(driver)
+        uiHelper = UiHelper(driver)
+
+        loginForm.inputUserName("")
+        loginForm.inputPassword("")
+        loginForm.clickSignInButton()
+
+        uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[1]//p"
+                                       and "//*[@id='modal-auth-form']/div[2]//p")
+        self.assertTrue(uiHelper)
+
+
+    def passwordEmpty_2(self):
         driver = self.driver
         loginForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
 
         loginForm.inputUserName("test")
+        loginForm.inputPassword("")
+        loginForm.clickSignInButton()
+
+        uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[2]//p")
+        self.assertTrue(uiHelper)
+
+
+    def usernameEmpty_3(self):
+        driver = self.driver
+        loginForm = LoginFormPage(driver)
+        uiHelper = UiHelper(driver)
+
+        loginForm.inputUserName("")
         loginForm.inputPassword("test")
         loginForm.clickSignInButton()
 
-        uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
+        uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[1]//p")
         self.assertTrue(uiHelper)
 
-    def testFormPositive_2(self):
+    def inputOneSymbol_4(self):
         driver = self.driver
         loginForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
 
-        loginForm.inputUserName("test123")
-        loginForm.inputPassword("test123")
+        loginForm.inputUserName(".")
+        loginForm.inputPassword(".")
         loginForm.clickSignInButton()
 
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
         self.assertTrue(uiHelper)
 
-    def testFormPositive_3(self):
+    def inputInvalidCharacters_5(self):
         driver = self.driver
         loginForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
 
-        loginForm.inputUserName("тест")
-        loginForm.inputPassword("тест")
+        loginForm.inputUserName("[|]'~<!--@%/*$%^&#*/()?>,|\.*/'")
+        loginForm.inputPassword("[|]'~<!--@%/*$%^&#*/()?>,|\.*/'")
         loginForm.clickSignInButton()
 
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
         self.assertTrue(uiHelper)
-
-
-    def testFormPositive_4(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
-
-        loginForm.inputUserName("test")
-        loginForm.inputPassword("12345")
-        loginForm.clickSignInButton()
-
-        uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
-
-    def testFormPositive_5(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
-
-        loginForm.inputUserName("tes")
-        loginForm.inputPassword("tes")
-        loginForm.clickSignInButton()
-
-        uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
-
-    def testFormPositive_6(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
-
-        loginForm.inputUserName("te")
-        loginForm.inputPassword("te")
-        loginForm.clickSignInButton()
-
-        uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
-
-    def tearDown(self):
-        self.driver.quit()
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(TestLoginFormNegative)
