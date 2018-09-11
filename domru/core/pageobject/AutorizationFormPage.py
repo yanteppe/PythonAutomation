@@ -20,7 +20,7 @@ class AutorizationFormPage:
     def forgotPassButton(self):
         self.driver.find_element_by_xpath("//*[@id='modal-auth-form']/div[3]/a/span").click()
 
-    def signInButton(self):
+    def clickSignInButton(self):
         self.driver.find_element(By.XPATH, "//*[@id='modal-auth-form']/div[5]/button/span").click()
 
     def checkBoxRememberMe(self):
@@ -29,3 +29,4 @@ class AutorizationFormPage:
     def passRecoveryField(self, inputField):
         self.driver.find_element_by_xpath("//input[@id='authrecoveryform-username']").clear()
         self.driver.find_element_by_xpath("//input[@id='authrecoveryform-username']").send_keys(inputField)
+
