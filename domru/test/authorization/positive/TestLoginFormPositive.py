@@ -4,11 +4,11 @@ import unittest
 from selenium import webdriver
 
 from domru.core.helper.UiHelper import UiHelper
-from domru.core.pageobject.AutorizationFormPage import AutorizationFormPage
+from domru.core.pageobject.LoginFormPage import LoginFormPage
 from domru.core.pageobject.HomePage import HomePage
 
 
-class TestAuthorizationForm(unittest.TestCase):
+class TestLoginFormPositive(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome("/chromedriver")
@@ -21,19 +21,19 @@ class TestAuthorizationForm(unittest.TestCase):
 
     def testFormPositive_1(self):
         driver = self.driver
-        autorizationForm = AutorizationFormPage(driver)
+        loginForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
 
-        autorizationForm.inputUserName("test")
-        autorizationForm.inputPassword("test")
-        autorizationForm.clickSignInButton()
+        loginForm.inputUserName("test")
+        loginForm.inputPassword("test")
+        loginForm.clickSignInButton()
 
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
         self.assertTrue(uiHelper)
 
     def testFormPositive_2(self):
         driver = self.driver
-        autorizationForm = AutorizationFormPage(driver)
+        autorizationForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
 
         autorizationForm.inputUserName("test123")
@@ -45,7 +45,7 @@ class TestAuthorizationForm(unittest.TestCase):
 
     def testFormPositive_3(self):
         driver = self.driver
-        autorizationForm = AutorizationFormPage(driver)
+        autorizationForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
 
         autorizationForm.inputUserName("тест")
@@ -58,7 +58,7 @@ class TestAuthorizationForm(unittest.TestCase):
 
     def testFormPositive_4(self):
         driver = self.driver
-        autorizationForm = AutorizationFormPage(driver)
+        autorizationForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
 
         autorizationForm.inputUserName("test")
@@ -70,7 +70,7 @@ class TestAuthorizationForm(unittest.TestCase):
 
     def testFormPositive_5(self):
         driver = self.driver
-        autorizationForm = AutorizationFormPage(driver)
+        autorizationForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
 
         autorizationForm.inputUserName("tes")
@@ -82,7 +82,7 @@ class TestAuthorizationForm(unittest.TestCase):
 
     def testFormPositive_6(self):
         driver = self.driver
-        autorizationForm = AutorizationFormPage(driver)
+        autorizationForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
 
         autorizationForm.inputUserName("te")
