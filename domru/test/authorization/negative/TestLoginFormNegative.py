@@ -19,7 +19,7 @@ class TestLoginFormNegative(unittest.TestCase):
         homePage.SignInButton()
 
 
-    def usernameAndPasswodEmpty_1(self):
+    def testUsernameAndPasswodEmpty_1(self):
         driver = self.driver
         loginForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
@@ -33,7 +33,7 @@ class TestLoginFormNegative(unittest.TestCase):
         self.assertTrue(uiHelper)
 
 
-    def passwordEmpty_2(self):
+    def testPasswordEmpty_2(self):
         driver = self.driver
         loginForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
@@ -46,7 +46,7 @@ class TestLoginFormNegative(unittest.TestCase):
         self.assertTrue(uiHelper)
 
 
-    def usernameEmpty_3(self):
+    def testUsernameEmpty_3(self):
         driver = self.driver
         loginForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
@@ -58,7 +58,7 @@ class TestLoginFormNegative(unittest.TestCase):
         uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[1]//p")
         self.assertTrue(uiHelper)
 
-    def inputOneSymbol_4(self):
+    def testInputOneSymbol_4(self):
         driver = self.driver
         loginForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
@@ -70,7 +70,7 @@ class TestLoginFormNegative(unittest.TestCase):
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
         self.assertTrue(uiHelper)
 
-    def inputInvalidCharacters_5(self):
+    def testInputInvalidCharacters_5(self):
         driver = self.driver
         loginForm = LoginFormPage(driver)
         uiHelper = UiHelper(driver)
@@ -84,4 +84,4 @@ class TestLoginFormNegative(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main(TestLoginFormNegative)
+    unittest.main()
