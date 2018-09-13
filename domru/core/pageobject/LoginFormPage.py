@@ -1,10 +1,12 @@
 from selenium.webdriver.common.by import By
 
-
 class LoginFormPage:
 
     def __init__(self, driver):
         self.driver = driver
+
+    def openLoginForm(self):
+        self.driver.find_element(By.CSS_SELECTOR, "a.menu__link:nth-child(1)").click()
 
     def citySelectionButton(self):
         self.driver.find_element_by_xpath("/html/body/div[7]/div/div[2]/a").click()

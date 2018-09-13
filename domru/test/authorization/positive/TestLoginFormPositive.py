@@ -1,100 +1,90 @@
 # -*- coding: utf-8 -*-
-import unittest
+import pytest
 
 from selenium import webdriver
 
+from domru.core.TestBase import TestBase
 from domru.core.helper.UiHelper import UiHelper
 from domru.core.pageobject.LoginFormPage import LoginFormPage
 from domru.core.pageobject.HomePage import HomePage
 
 
-class TestLoginFormPositive(unittest.TestCase):
+class TestLoginFormPositive(TestBase):
 
-    def setUp(self):
-        self.driver = webdriver.Chrome("/chromedriver")
-        self.driver.implicitly_wait(10)
-        self.driver.get("http://tvnew.domru.ru/")
-        assert "Контентотека" in self.driver.title
-        homePage = HomePage(self.driver)
-        homePage.SignInButton()
+    def testUsernameAndPassword_1(self):
+        self.getUrl("http://tvnew.domru.ru/")
+        uiHelper = UiHelper(self.driver)
+        loginForm = LoginFormPage(self.driver)
 
-
-    def testFormPositive_1(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
-
+        loginForm.openLoginForm()
         loginForm.inputUserName("test")
         loginForm.inputPassword("test")
         loginForm.clickSignInButton()
 
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
+        assert (uiHelper) == uiHelper
 
-    def testFormPositive_2(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
+    def testUsernameAndPassword_2(self):
+        self.getUrl("http://tvnew.domru.ru/")
+        uiHelper = UiHelper(self.driver)
+        loginForm = LoginFormPage(self.driver)
 
+        loginForm.openLoginForm()
         loginForm.inputUserName("test123")
         loginForm.inputPassword("test123")
         loginForm.clickSignInButton()
 
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
+        assert (uiHelper) == uiHelper
 
-    def testFormPositive_3(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
+    def testUsernameAndPassword__3(self):
+        self.getUrl("http://tvnew.domru.ru/")
+        uiHelper = UiHelper(self.driver)
+        loginForm = LoginFormPage(self.driver)
 
+        loginForm.openLoginForm()
         loginForm.inputUserName("тест")
         loginForm.inputPassword("тест")
         loginForm.clickSignInButton()
 
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
+        assert (uiHelper) == uiHelper
 
+    def testUsernameAndPassword__4(self):
+        self.getUrl("http://tvnew.domru.ru/")
+        uiHelper = UiHelper(self.driver)
+        loginForm = LoginFormPage(self.driver)
 
-    def testFormPositive_4(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
-
+        loginForm.openLoginForm()
         loginForm.inputUserName("test")
         loginForm.inputPassword("12345")
         loginForm.clickSignInButton()
 
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
+        assert uiHelper == uiHelper
 
-    def testFormPositive_5(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
+    def testUsernameAndPassword__5(self):
+        self.getUrl("http://tvnew.domru.ru/")
+        uiHelper = UiHelper(self.driver)
+        loginForm = LoginFormPage(self.driver)
 
+        loginForm.openLoginForm()
         loginForm.inputUserName("tes")
         loginForm.inputPassword("tes")
         loginForm.clickSignInButton()
 
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
+        assert uiHelper == uiHelper
 
-    def testFormPositive_6(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
+    def testUsernameAndPassword__6(self):
+        self.getUrl("http://tvnew.domru.ru/")
+        uiHelper = UiHelper(self.driver)
+        loginForm = LoginFormPage(self.driver)
 
+        loginForm.openLoginForm()
         loginForm.inputUserName("te")
         loginForm.inputPassword("te")
         loginForm.clickSignInButton()
 
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
-
-    def tearDown(self):
-        self.driver.quit()
-
-
-if __name__ == '__main__':
-    unittest.main()
+        assert uiHelper == uiHelper
