@@ -7,7 +7,10 @@ from domru.core.helper.UiHelper import UiHelper
 from domru.core.pageobject.LoginFormPage import LoginFormPage
 from domru.core.pageobject.HomePage import HomePage
 
-
+'''
+Проверка формы авторизации.
+Негативные проверки полей username и password.
+'''
 class TestLoginFormNegative(unittest.TestCase):
 
     def setUp(self):

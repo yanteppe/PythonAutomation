@@ -8,7 +8,10 @@ from domru.core.helper.UiHelper import UiHelper
 from domru.core.pageobject.LoginFormPage import LoginFormPage
 from domru.core.pageobject.HomePage import HomePage
 
-
+'''
+Проверка формы авторизации.
+Позитивные проверки полей username и password.
+'''
 class TestLoginFormPositive(TestBase):
 
     def testUsernameAndPassword_1(self):
