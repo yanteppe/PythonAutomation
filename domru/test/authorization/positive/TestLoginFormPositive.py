@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
-import pytest
-
-from selenium import webdriver
 
 from domru.core.TestBase import TestBase
 from domru.core.helper.UiHelper import UiHelper
 from domru.core.pageobject.LoginFormPage import LoginFormPage
-from domru.core.pageobject.HomePage import HomePage
 
 '''
 Проверка формы авторизации.
@@ -40,7 +36,7 @@ class TestLoginFormPositive(TestBase):
         uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
         assert (uiHelper) == uiHelper
 
-    def testUsernameAndPassword__3(self):
+    def testUsernameAndPassword_3(self):
         self.getUrl("http://tvnew.domru.ru/")
         uiHelper = UiHelper(self.driver)
         loginForm = LoginFormPage(self.driver)

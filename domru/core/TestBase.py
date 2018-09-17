@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 
 class TestBase:
 
-    def setup_method(self, url):
+    def setup_method(self):
         self.driver = webdriver.Chrome("/chromedriver")
         self.driver.implicitly_wait(5)
 

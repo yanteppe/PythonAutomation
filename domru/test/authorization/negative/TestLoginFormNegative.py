@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
+import pytest
 from selenium import webdriver
 
 from domru.core.helper.UiHelper import UiHelper
@@ -11,80 +12,67 @@ from domru.core.pageobject.HomePage import HomePage
 Проверка формы авторизации.
 Негативные проверки полей username и password.
 '''
-class TestLoginFormNegative(unittest.TestCase):
+def testUsernameAndPasswodEmpty_1(setUp):
+    loginForm = LoginFormPage(setUp)
+    uiHelper = UiHelper(setUp)
 
-    def setUp(self):
-        self.driver = webdriver.Chrome("/chromedriver")
-        self.driver.implicitly_wait(10)
-        self.driver.get("http://tvnew.domru.ru/")
-        assert "Контентотека" in self.driver.title
-        homePage = HomePage(self.driver)
-        homePage.SignInButton()
+    loginForm.openLoginForm()
+    loginForm.inputUserName("")
+    loginForm.inputPassword("")
+    loginForm.clickSignInButton()
 
-
-    def testUsernameAndPasswodEmpty_1(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
-
-        loginForm.inputUserName("")
-        loginForm.inputPassword("")
-        loginForm.clickSignInButton()
-
-        uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[1]//p"
+    uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[1]//p"
                                        and "//*[@id='modal-auth-form']/div[2]//p")
-        self.assertTrue(uiHelper)
+    assert (uiHelper) == uiHelper
 
 
-    def testPasswordEmpty_2(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
+def testPasswordEmpty_2(setUp):
+    loginForm = LoginFormPage(setUp)
+    uiHelper = UiHelper(setUp)
 
-        loginForm.inputUserName("test")
-        loginForm.inputPassword("")
-        loginForm.clickSignInButton()
+    loginForm.openLoginForm()
+    loginForm.inputUserName("test")
+    loginForm.inputPassword("")
+    loginForm.clickSignInButton()
 
-        uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[2]//p")
-        self.assertTrue(uiHelper)
-
-
-    def testUsernameEmpty_3(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
-
-        loginForm.inputUserName("")
-        loginForm.inputPassword("test")
-        loginForm.clickSignInButton()
-
-        uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[1]//p")
-        self.assertTrue(uiHelper)
-
-    def testInputOneSymbol_4(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
-
-        loginForm.inputUserName(".")
-        loginForm.inputPassword(".")
-        loginForm.clickSignInButton()
-
-        uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
-
-    def testInputInvalidCharacters_5(self):
-        driver = self.driver
-        loginForm = LoginFormPage(driver)
-        uiHelper = UiHelper(driver)
-
-        loginForm.inputUserName("[|]'~<!--@%/*$%^&#*/()?>,|\.*/'")
-        loginForm.inputPassword("[|]'~<!--@%/*$%^&#*/()?>,|\.*/'")
-        loginForm.clickSignInButton()
-
-        uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-        self.assertTrue(uiHelper)
+    uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[2]//p")
+    assert (uiHelper) == uiHelper
 
 
-if __name__ == '__main__':
-    unittest.main()
+def testUsernameEmpty_3(setUp):
+    loginForm = LoginFormPage(setUp)
+    uiHelper = UiHelper(setUp)
+
+    loginForm.openLoginForm()
+    loginForm.inputUserName("")
+    loginForm.inputPassword("test")
+    loginForm.clickSignInButton()
+
+    uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[1]//p")
+    assert (uiHelper) == uiHelper
+
+
+def testInputOneSymbol_4(setUp):
+    loginForm = LoginFormPage(setUp)
+    uiHelper = UiHelper(setUp)
+
+    loginForm.openLoginForm()
+    loginForm.inputUserName(".")
+    loginForm.inputPassword(".")
+    loginForm.clickSignInButton()
+
+    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
+    assert (uiHelper) == uiHelper
+
+
+def testInputInvalidCharacters_5(setUp):
+    loginForm = LoginFormPage(setUp)
+    uiHelper = UiHelper(setUp)
+
+    loginForm.openLoginForm()
+    loginForm.inputUserName("[|]'~<!--@%/*$%^&#*/()?>,|\.*/'")
+    loginForm.inputPassword("[|]'~<!--@%/*$%^&#*/()?>,|\.*/'")
+    loginForm.clickSignInButton()
+
+    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
+    assert (uiHelper) == uiHelper
