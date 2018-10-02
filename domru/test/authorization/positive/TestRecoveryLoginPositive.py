@@ -21,8 +21,8 @@ def testRecoveryField_contractNumber_1(setUp):
     loginForm.inputRecoveryField("test123")
     loginForm.clickRecoveryButtonNext()
 
-    uiHelper.waitElement(pathToElement="//div[2]/div/p")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["titleNotFindContract"])
+    assert (element) == element
 
 def testRecoveryField_contractNumber_2(setUp):
     loginForm = LoginFormPage(setUp)
@@ -33,8 +33,8 @@ def testRecoveryField_contractNumber_2(setUp):
     loginForm.inputRecoveryField("тест123")
     loginForm.clickRecoveryButtonNext()
 
-    uiHelper.waitElement(pathToElement="//div[2]/div/p")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["titleNotFindContract"])
+    assert (element) == element
 
 def testRecoveryField_contractNumber_3(setUp):
     loginForm = LoginFormPage(setUp)
@@ -45,8 +45,8 @@ def testRecoveryField_contractNumber_3(setUp):
     loginForm.inputRecoveryField("00000")
     loginForm.clickRecoveryButtonNext()
 
-    uiHelper.waitElement(pathToElement="//div[2]/div/p")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["titleNotFindContract"])
+    assert (element) == element
 
 def testRecoveryField_contractNumber_4(setUp):
     loginForm = LoginFormPage(setUp)
@@ -57,8 +57,8 @@ def testRecoveryField_contractNumber_4(setUp):
     loginForm.inputRecoveryField("№12345")
     loginForm.clickRecoveryButtonNext()
 
-    uiHelper.waitElement(pathToElement="//div[2]/div/p")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["titleNotFindContract"])
+    assert (element) == element
 
 def testRecoveryField_phoneNumber_5(setUp):
     loginForm = LoginFormPage(setUp)
@@ -69,8 +69,8 @@ def testRecoveryField_phoneNumber_5(setUp):
     loginForm.inputRecoveryField("9191234567")
     loginForm.clickRecoveryButtonNext()
 
-    uiHelper.waitElement(pathToElement="//div[2]/div/p")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["titleNotFindContract"])
+    assert (element) == element
 
 def testRecoveryField_phoneNumber_6(setUp):
     loginForm = LoginFormPage(setUp)
@@ -81,8 +81,8 @@ def testRecoveryField_phoneNumber_6(setUp):
     loginForm.inputRecoveryField("79191234567")
     loginForm.clickRecoveryButtonNext()
 
-    uiHelper.waitElement(pathToElement="//div[2]/div/p")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["titleNotFindContract"])
+    assert (element) == element
 
 def testRecoveryField_phoneNumber_7(setUp):
     loginForm = LoginFormPage(setUp)
@@ -93,8 +93,8 @@ def testRecoveryField_phoneNumber_7(setUp):
     loginForm.inputRecoveryField("+79191234567")
     loginForm.clickRecoveryButtonNext()
 
-    uiHelper.waitElement(pathToElement="//div[2]/div/p")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["titleNotFindContract"])
+    assert (element) == element
 
 def testRecoveryField_email_8(setUp):
     loginForm = LoginFormPage(setUp)
@@ -105,8 +105,8 @@ def testRecoveryField_email_8(setUp):
     loginForm.inputRecoveryField("test@test.ru")
     loginForm.clickRecoveryButtonNext()
 
-    uiHelper.waitElement(pathToElement="//div[2]/div/p")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["titleNotFindContract"])
+    assert (element) == element
 
 def testRecoveryField_email_9(setUp):
     loginForm = LoginFormPage(setUp)
@@ -117,8 +117,8 @@ def testRecoveryField_email_9(setUp):
     loginForm.inputRecoveryField("test1@test.ru")
     loginForm.clickRecoveryButtonNext()
 
-    uiHelper.waitElement(pathToElement="//div[2]/div/p")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["titleNotFindContract"])
+    assert (element) == element
 
 def testRecoveryField_email_10(setUp):
     loginForm = LoginFormPage(setUp)
@@ -129,5 +129,5 @@ def testRecoveryField_email_10(setUp):
     loginForm.inputRecoveryField("test.test@test.ru")
     loginForm.clickRecoveryButtonNext()
 
-    uiHelper.waitElement(pathToElement="//div[2]/div/p")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["titleNotFindContract"])
+    assert (element) == element

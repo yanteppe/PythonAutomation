@@ -10,4 +10,12 @@ def setUp(request):
     chromeDriver.implicitly_wait(5)
     chromeDriver.get("http://tvnew.domru.ru/")
     yield chromeDriver
-    chromeDriver.close()
+    chromeDriver.quit()
+
+# @pytest.yield_fixture(params=[("test"), ("test123"), ("тест")])
+# def usernameData(request):
+#     yield request.param
+#
+# @pytest.yield_fixture(params=[("test"), ("test123"), ("тест")])
+# def passwordData(request):
+#     yield request.param

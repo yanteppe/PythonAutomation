@@ -21,9 +21,11 @@ def testUsernameAndPasswodEmpty_1(setUp):
     loginForm.inputPassword("")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[1]//p"
-                                       and "//*[@id='modal-auth-form']/div[2]//p")
-    assert (uiHelper) == uiHelper
+    usernameErrorText = uiHelper.waitVisibleElementByXPATH(loginForm.elements["usernameMustBeFilledText"])
+    assert (usernameErrorText) == usernameErrorText
+
+    passErrorText = uiHelper.waitVisibleElementByXPATH(loginForm.elements["passMustBeFilledText"])
+    assert (passErrorText) == passErrorText
 
 
 def testPasswordEmpty_2(setUp):
@@ -35,8 +37,8 @@ def testPasswordEmpty_2(setUp):
     loginForm.inputPassword("")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[2]//p")
-    assert (uiHelper) == uiHelper
+    passErrorText = uiHelper.waitVisibleElementByXPATH(loginForm.elements["passMustBeFilledText"])
+    assert (passErrorText) == passErrorText
 
 
 def testUsernameEmpty_3(setUp):
@@ -48,8 +50,8 @@ def testUsernameEmpty_3(setUp):
     loginForm.inputPassword("test")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//*[@id='modal-auth-form']/div[1]//p")
-    assert (uiHelper) == uiHelper
+    errorLigonText = uiHelper.waitVisibleElementByXPATH(loginForm.elements["usernameMustBeFilledText"])
+    assert (errorLigonText) == errorLigonText
 
 
 def testInputOneSymbol_4(setUp):
@@ -61,8 +63,8 @@ def testInputOneSymbol_4(setUp):
     loginForm.inputPassword(".")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    errorLigonText = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (errorLigonText) == errorLigonText
 
 
 def testInputInvalidCharacters_5(setUp):
@@ -74,5 +76,5 @@ def testInputInvalidCharacters_5(setUp):
     loginForm.inputPassword("[|]'~<!--@%/*$%^&#*/()?>,|\.*/'")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    errorLigonText = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (errorLigonText) == errorLigonText

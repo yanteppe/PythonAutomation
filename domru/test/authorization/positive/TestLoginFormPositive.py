@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from domru.core.TestBase import TestBase
 from domru.core.helper.UiHelper import UiHelper
+from domru.core.pageobject.HomePage import HomePage
 from domru.core.pageobject.LoginFormPage import LoginFormPage
 
 '''
@@ -17,8 +17,8 @@ def testUsernameAndPassword_login_1(setUp):
     loginForm.inputPassword("test")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_login_2(setUp):
@@ -26,12 +26,13 @@ def testUsernameAndPassword_login_2(setUp):
     uiHelper = UiHelper(setUp)
 
     loginForm.openLoginForm()
+
     loginForm.inputUserName("test123")
     loginForm.inputPassword("test123")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_login_3(setUp):
@@ -43,8 +44,8 @@ def testUsernameAndPassword_login_3(setUp):
     loginForm.inputPassword("тест")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_login_4(setUp):
@@ -56,8 +57,8 @@ def testUsernameAndPassword_login_4(setUp):
     loginForm.inputPassword("12345")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_login_5(setUp):
@@ -69,8 +70,8 @@ def testUsernameAndPassword_login_5(setUp):
     loginForm.inputPassword("tes")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_login_6(setUp):
@@ -82,8 +83,8 @@ def testUsernameAndPassword_login_6(setUp):
     loginForm.inputPassword("te")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_contractNumber_7(setUp):
@@ -95,8 +96,8 @@ def testUsernameAndPassword_contractNumber_7(setUp):
     loginForm.inputPassword("test")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_contractNumber_8(setUp):
@@ -108,8 +109,8 @@ def testUsernameAndPassword_contractNumber_8(setUp):
     loginForm.inputPassword("test")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_contractNumber_9(setUp):
@@ -121,8 +122,8 @@ def testUsernameAndPassword_contractNumber_9(setUp):
     loginForm.inputPassword("test")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_email_10(setUp):
@@ -134,8 +135,8 @@ def testUsernameAndPassword_email_10(setUp):
     loginForm.inputPassword("test")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_email_11(setUp):
@@ -147,8 +148,8 @@ def testUsernameAndPassword_email_11(setUp):
     loginForm.inputPassword("test")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
 
 
 def testUsernameAndPassword_email_12(setUp):
@@ -160,5 +161,5 @@ def testUsernameAndPassword_email_12(setUp):
     loginForm.inputPassword("test")
     loginForm.clickSignInButton()
 
-    uiHelper.waitElement(pathToElement="//div[contains(@class, 'modal__paragraph form-error')]")
-    assert (uiHelper) == uiHelper
+    element = uiHelper.waitVisibleElementByXPATH(loginForm.elements["errorLoginText"])
+    assert (element) == element
